@@ -41,7 +41,6 @@ gmean <- fcs_df %>%
 gmean %>% 
   inner_join(markers) %>% 
   mutate(antibody = factor(antibody, levels = rev(markers$antibody))) %>% 
-  mutate(lvl = as.integer(antibody)) %>% 
   ggplot(aes('x', antibody)) +
   geom_tile(aes(fill = expr)) +
   scale_fill_gradient(low = 'grey20', high = 'yellow2', limits = c(0, 75), oob = scales::squish) +
