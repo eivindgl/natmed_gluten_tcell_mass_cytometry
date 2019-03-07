@@ -17,13 +17,11 @@ read_dataset <- function(unique_name, path = 'out/cytof.h5') {
   colnames(M) <- h5readAttributes(path, h5_path)$colnames
   M %>% 
     as_tibble() %>% 
-    # gather(marker, value) %>% 
     mutate(filename = unique_name) %>% 
     select(filename , everything())
 }
 
 
-## Read antibodies to generate plots for
 markers <- read_csv('meta/cytof_markers_specific.csv')
 
 samples <- read_csv('meta/meta.csv') %>% 
